@@ -1,0 +1,13 @@
+<launch>
+    <arg name="image" default="/usb_cam/image_raw" />
+    <arg name="config" default="ycbv" />
+    <arg name="config_file" default="$(find ros_cosypose)/config/$(arg config).yaml" />
+    <arg name="update_scene" default="False" />
+
+    <node pkg="ros_cosypose" type="object_recognition.py" name="object_recognition" output="screen">
+        <param name="image" value="$(arg image)" />
+        <rosparam command="load" file="$(arg config_file)" />
+    </node>
+    <node pkg="ros_cosypose" type="object_information.py" name="object_information" output="screen"/>
+    <node if="$(eval update_scene)" pkg="ros_cosypose" type="scene_update.py" name="scene_update" output="screen" />
+</launch>

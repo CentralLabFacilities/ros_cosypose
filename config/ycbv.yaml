@@ -1,0 +1,5 @@
+one_instance_per_class: True
+detection_threshold: 0.5
+object_coarse_run_id: "coarse-bop-ycbv-synt+real--822463"
+object_refiner_run_id: "refiner-bop-ycbv-synt+real--631598"
+object_detector_run_id: "detector-bop-ycbv-synt+real--292971"

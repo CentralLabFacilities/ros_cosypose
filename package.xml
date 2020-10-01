@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ros_cosypose</name>
+  <version>0.1.0</version>
+  <description>The ros_cosypose package</description>
+
+  <maintainer email="yann.labbe@inria.fr">Yann Labbe</maintainer>
+  <author email="igor.kalevatykh@inria.fr">Igor Kalevatykh</author>
+  <author email="yann.labbe@inria.fr">Yann Labbe</author>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>object_recognition_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>python-numpy</exec_depend>
+
+</package>
