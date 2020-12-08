@@ -9,7 +9,7 @@ ROS interface to the cosypose library.
 
 ```
 anaconda activate cosypose
-pip install transforms3d, trimesh
+pip install transforms3d, trimesh, psutil, rospkg
 ```
 
 - clone the ros_cosypose package into your catkin workspace, rebuild the workspace.
