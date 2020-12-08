@@ -158,7 +158,8 @@ class ObjectRecognitionServer:
 
 
 def _pose_to_msg(matrix):
+    px, py, pz = matrix[:3, 3]
+    qw, qx, qy, qz = mat2quat(matrix[:3, :3])
     return Pose(
-            position = Point(*matrix[:3, 3]),
-            orientation = Quaternion(*mat2quat(matrix[:3, :3]))
-    )
+        position=Point(px, py, pz),
+        orientation=Quaternion(qx, qy, qz, qw))
