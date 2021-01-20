@@ -1,6 +1,7 @@
 """This module describes the ObjectRecognitionServer."""
 
 import traceback
+import os
 
 import numpy as np
 import rospy
@@ -45,18 +46,23 @@ class ObjectInformationService:
             db, key = req.type.db, req.type.key
             rospy.logdebug('Get information for %s/%s', db, key)
 
-            if db not in self._datasets:
-                self._datasets[db] = ObjectDatabase(db)
-            dataset = self._datasets[db]
+            if db == 'file':
+                mesh = self.make_mesh(key, (1.0, 1.0, 1.0))
+                name = os.path.basename(key)
+            else:
+                if db not in self._datasets:
+                    self._datasets[db] = ObjectDatabase(db)
+                dataset = self._datasets[db]
 
-            if (db, key) not in self._meshes:
-                self._meshes[(db, key)] = self.make_mesh(
-                    dataset.get_mesh_path(key),
-                    dataset.get_mesh_scale(key))
-            mesh = self._meshes[(db, key)]
+                if (db, key) not in self._meshes:
+                    self._meshes[(db, key)] = self.make_mesh(
+                        dataset.get_mesh_path(key),
+                        dataset.get_mesh_scale(key))
+                mesh = self._meshes[(db, key)]
+                name = dataset.get_name(key)
 
             response = GetObjectInformationResponse()
-            response.information.name = dataset.get_name(key)
+            response.information.name = name
             response.information.ground_truth_mesh = mesh
             return response
         except Exception as ex:
