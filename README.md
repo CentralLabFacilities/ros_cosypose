@@ -18,7 +18,7 @@ catkin build
 - install additional dependencies inside the anaconda environment:
 
 ```
-anaconda activate cosypose
+conda activate cosypose
 pip install transforms3d, trimesh, psutil, rospkg
 ```
 
@@ -64,7 +64,7 @@ Subscribes to the `/recognize_object_array` topic and updating MoveIt planning s
 Start nodes from the cosypose anaconda environment:
 
 ```
-anaconda activate cosypose
+conda activate cosypose
 roslaunch ros_cosypose object_recognition.launch image:=/usb_cam/image_raw config:=ycbv scene_update:=True
 ```
 
