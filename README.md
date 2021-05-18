@@ -1,8 +1,18 @@
 # ros_cosypose
 
-ROS interface to the cosypose library.
+ROS interface to the [cosypose](https://github.com/ylabbe/cosypose) library.
 
 # Installation
+
+- clone the ros_cosypose package into your catkin workspace, install dependencies, rebuild the workspace. Make sure you are outside the conda environment.
+
+```
+cd CATKIN_WORKSPACE/src
+git clone https://github.com/ikalevatykh/ros_cosypose
+cd ..
+rosdep install --from-paths src --ignore-src --rosdistro=$ROS_DISTRO -y
+catkin build
+```
 
 - install [cosypose](https://github.com/ylabbe/cosypose). It creates an anaconda environment during the installation.
 - install additional dependencies inside the anaconda environment:
@@ -12,15 +22,10 @@ anaconda activate cosypose
 pip install transforms3d, trimesh, psutil, rospkg
 ```
 
-- clone the ros_cosypose package into your catkin workspace, rebuild the workspace.
+- disable the automatic conda base environment activation:
 
 ```
-conda deactivate
-cd CATKIN_WORKSPACE/src
-git clone https://github.com/ikalevatykh/ros_cosypose
-cd ..
-rosdep install --from-paths src --ignore-src --rosdistro=$ROS_DISTRO -y
-catkin build
+conda config --set auto_activate_base false
 ```
 
 Tested on ROS Noetic, Ubuntu 20.04 and ROS Melodic, Ubuntu 18.04.
@@ -31,12 +36,14 @@ Package has minimum dependencies and should work in previous ROS versions also.
 ## object_recognition.py
 
 Node starts `/recognize_objects` action server.
+
 Publish:
 
 - `/recognize_object_array`: recognition results
 - `/recognized_object_marker_array`: debug MarkerArray to visualize recognized objects in rviz
 - `/recognized_object_overlay/image`: debug image with detection bounding boxes
-  Parameters:
+
+Parameters:
 - `image`: camera image topic.
 - `one_instance_per_class`: default True
 - `detection_threshold`: default 0.5
