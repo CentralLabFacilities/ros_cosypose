@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from object_recognition_msgs.srv import (GetObjectInformation,

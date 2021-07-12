@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 from ros_cosypose.scene_update_service import SceneUpdateService

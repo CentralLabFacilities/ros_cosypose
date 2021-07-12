@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Assume this script called from anaconda environment.
 # Add conda site_packages path before ROS pathes.
